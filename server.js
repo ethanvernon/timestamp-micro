@@ -29,6 +29,12 @@ app.get("/api/author", function (req, res) {
   res.json({name: 'Ethan'});
 });
 
+// test nodemon
+app.get("/api/test-node-mon", function (req, res) {
+  res.json({working: true});
+});
+
+
 
 
 // listen for requests :)

@@ -5,6 +5,7 @@
 	"main": "server.js",
 	"homepage": "https://ethanvernon.github.io/timestamp-micro/",
 	"scripts": {
+		"dev": "nodemon server.js",
 		"start": "node server.js"
 	},
 	"dependencies": {
@@ -24,5 +25,8 @@
 		"express",
 		"freecodecamp"
 	],
-	"license": "MIT"
+	"license": "MIT",
+	"devDependencies": {
+		"nodemon": "^1.18.10"
+	}
 }
