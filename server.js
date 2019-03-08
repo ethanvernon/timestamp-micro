@@ -69,7 +69,7 @@ app.get('/api/timestamp/:date_string?', function(req, res) {
 		res.json({ "error" : date.toString() });
 	} else {
 	//If the date string is valid the api returns a JSON having the structure {"unix": <date.getTime()>, "utc" : <date.toUTCString()> }
-		res.json({unix: date.getTime(), utc: date.toUTCString(), 'message':'hey elise'});
+		res.json({unix: date.getTime(), utc: date.toUTCString()});
 	}
 	
 
@@ -77,6 +77,6 @@ app.get('/api/timestamp/:date_string?', function(req, res) {
 
 
 // listen for requests :)
-var listener = app.listen('8000', function () {
+var listener = app.listen('process.env.PORT', function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
