@@ -34,7 +34,29 @@ app.get("/api/test-node-mon", function (req, res) {
   res.json({working: true});
 });
 
+//time server from tutorials
+app.get('/now', function(req, res, next) {
+  req.time = new Date().toString();
+  next();
+}, 
+  function(req, res) {
+    res.send({'time': req.time});
+  }
+);
 
+//handle empty string
+app.get('/api/timestamp/:date_string?', function(req, res, next) {
+	if (!req.params.date_string) {		
+	  req.time = new Date().toString();
+	  next();
+	} else {
+		next();
+	}
+}, 
+	  function(req, res) {
+	    res.send({'time': req.time});
+	  }
+);
 
 
 // listen for requests :)
