@@ -49,7 +49,7 @@ app.get('/api/timestamp/:date_string?', function(req, res) {
 
 	const dateString=req.params.date_string;
 	
-	let date;
+	var date;
 
 	// If the date string is empty it should be equivalent to trigger new Date(), i.e. the service uses the current timestamp
 	if (!dateString) {		
