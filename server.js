@@ -45,21 +45,38 @@ app.get('/now', function(req, res, next) {
 );
 
 //handle empty string
-app.get('/api/timestamp/:date_string?', function(req, res, next) {
-	if (!req.params.date_string) {		
-	  req.time = new Date().toString();
-	  next();
+app.get('/api/timestamp/:date_string?', function(req, res) {
+
+	const dateString=req.params.date_string;
+	
+	let date;
+
+	// If the date string is empty it should be equivalent to trigger new Date(), i.e. the service uses the current timestamp
+	if (!dateString) {		
+		date = new Date();
 	} else {
-		next();
+	// If the dateString is an integer, convert dateString to integer and calculate date
+		if (!isNaN(dateString)) {
+			date = new Date(parseInt(dateString));
+		} else {
+	// otherwise the service uses the current timestamp		
+			date=new Date(dateString);
+		}
 	}
-}, 
-	  function(req, res) {
-	    res.send({'time': req.time});
-	  }
-);
+
+	//If the date string is invalid the api returns a JSON having the structure {"error" : "Invalid Date" }
+	if (date.toString() === "Invalid Date") {
+		res.json({ "error" : date.toString() });
+	} else {
+	//If the date string is valid the api returns a JSON having the structure {"unix": <date.getTime()>, "utc" : <date.toUTCString()> }
+		res.json({unix: date.getTime(), utc: date.toUTCString(), 'message':'hey elise'});
+	}
+	
+
+});
 
 
 // listen for requests :)
-var listener = app.listen(process.env.PORT, function () {
+var listener = app.listen('8000', function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
