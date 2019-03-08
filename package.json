@@ -5,9 +5,7 @@
 	"main": "server.js",
 	"homepage": "https://ethanvernon.github.io/timestamp-micro/",
 	"scripts": {
-		"start": "node server.js",
-		"predeploy": "npm run build",
-		"deploy": "gh-pages -d build"
+		"start": "node server.js"
 	},
 	"dependencies": {
 		"express": "^4.12.4",

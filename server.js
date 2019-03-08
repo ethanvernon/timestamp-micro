@@ -24,6 +24,11 @@ app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
+// API endpoint that returns author name... 
+app.get("/api/author", function (req, res) {
+  res.json({name: 'Ethan'});
+});
+
 
 
 // listen for requests :)
